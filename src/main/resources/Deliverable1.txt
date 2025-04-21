@@ -1,0 +1,134 @@
+Jacques-Conrad Calagui-Painchaud 6298805
+
+--- Scenario ---
+
+The Online Medical Management System is designed for digital health clinics and hospitals to streamline
+common medical services. The application allows patients to book appointments with doctors, receive e-prescriptions,
+and view their medical records and lab reports. Doctors can offer healthcare suggestions and consult patient records.
+The system also allows users to connect with blood and eye donors.
+
+
+
+--- Design Paradigm ---
+
+Patient:
+- Book appointments with doctors
+- Receive e-prescriptions
+- View medical records and lab reports
+- Request blood/eye donation
+
+Doctor:
+- View appointments asked for by patients
+- Provide consultations and e-prescriptions
+- View patient medical records and lab reports
+- Update patient records
+
+Admin (maybe):
+- Manage patient and doctor records
+- Monitor donors
+
+
+
+--- Expected Output ---
+
+The system will enable:
+- Patients to interact online with healthcare professionals
+- Doctors to manage consultations and patient records
+- Admins to manage and view proceedings (maybe)
+
+User Actions:
+- Role based login
+- Appointment scheduling
+- View medical records
+- Get prescriptions
+- Donor request
+
+
+
+--- Project Hierarchies ---
+
+User (abstract class):
+- Subclass: Patient, Doctor, Admin (maybe)
+
+MedicalThing (abstract class): (name to be changed)
+- Subclass: Appointment, Prescription, MedicalRecord
+
+
+
+--- Interface ---
+
+- RecordAccessible, it will allow the reuse of code between the Patient and Doctor classes
+
+
+
+--- Runtime-Polymorphism ---
+
+- displayDashboard() (abstract method from User) would display different things if a Patient or Doctor called it
+- viewRecords() Patient views their own records, Doctor *chooses* which Patient to view records from
+
+
+
+--- TextIO ---
+
+Main class. Handles basic IO for patients and doctors in the console. Used for login, booking, and accessing records
+during development. (Final product would have an actual UI, but that's beyond the scope of the project)
+
+
+
+--- Comparable/Comparator ---
+
+Appointment will implement Comparable to sort by appointment time
+MedicalRecord will implement Comparable to sort by date issued
+
+Patient, Doctor, Admin will implement Comparator to sort by id or name alphabetically
+Prescription will implement Comparator to sort by name alphabetically, date issued, expiration date
+
+
+
+--- Class diagram ---
+
+     -> Patient
+User -> Doctor
+     -> Admin
+
+             -> Prescription
+MedicalThing -> Appointment
+             -> MedicalRecord
+
+
+
+--- Deliverable 2 Plan ---
+
+Core classes (User, Patient, Doctor, MedicalThing, Appointment, Prescription)
+Interface (RecordAccessible)
+
+User:
+- displayDashboard()
+
+Patient:
+- bookAppointment(Doctor doctor, LocalDateTime time)
+- viewMedicalRecords()
+- viewPrescriptions()
+- requestDonor(String type) (blood or eye)
+@Override
+- displayDashboard()
+
+Doctor:
+- viewAppointments()
+- viewMedicalRecords(Patient patient)
+- viewPrescriptions(Patient patient)
+- provideConsultation(Patient patient)
+- providePrescription(Patient patient)
+- updateMedicalRecords(Patient patient)
+@Override
+- displayDashboard()
+
+Appointment:
+- confirmAppointment()
+- cancelAppointment
+@Override
+- compareTo(Appointment other)
+
+Prescription:
+- printPrescription()
+
