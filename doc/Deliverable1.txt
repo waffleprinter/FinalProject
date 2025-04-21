@@ -1,5 +1,9 @@
 Jacques-Conrad Calagui-Painchaud 6298805
 
+--------------------------------------------------------------------------
+GITHUB LINK: https://github.com/waffleprinter/FinalProject/tree/master
+---------------------------------------------------------------------------
+
 --- Scenario ---
 
 The Online Medical Management System is designed for digital health clinics and hospitals to streamline
