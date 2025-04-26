@@ -5,10 +5,10 @@ import java.util.Comparator;
 import java.util.Objects;
 
 public class Prescription {
-    private final String medication;
-    private final String instructions;
-    private final LocalDate dateIssued;
-    private final LocalDate expiryDate;
+    private String medication;
+    private String instructions;
+    private LocalDate dateIssued;
+    private LocalDate expiryDate;
 
     public Prescription(String medication, String instructions, LocalDate expiryDate) {
         if (expiryDate.isBefore(LocalDate.now())) {
@@ -72,15 +72,31 @@ public class Prescription {
         return medication;
     }
 
+    public void setMedication(String medication) {
+        this.medication = medication;
+    }
+
     public String getInstructions() {
         return instructions;
+    }
+
+    public void setInstructions(String instructions) {
+        this.instructions = instructions;
     }
 
     public LocalDate getDateIssued() {
         return dateIssued;
     }
 
+    public void setDateIssued(LocalDate dateIssued) {
+        this.dateIssued = dateIssued;
+    }
+
     public LocalDate getExpiryDate() {
         return expiryDate;
+    }
+
+    public void setExpiryDate(LocalDate expiryDate) {
+        this.expiryDate = expiryDate;
     }
 }
