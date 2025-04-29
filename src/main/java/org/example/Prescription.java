@@ -38,7 +38,6 @@ public class Prescription {
         @Override
         public int compare(Prescription o1, Prescription o2) {
             return switch (type) {
-                case "instructions" -> o1.instructions.compareTo(o2.instructions);
                 case "dateIssued" -> o1.dateIssued.compareTo(o2.dateIssued);
                 case "expiryDate" -> o1.expiryDate.compareTo(o2.expiryDate);
                 default -> o1.medication.compareTo(o2.medication);
