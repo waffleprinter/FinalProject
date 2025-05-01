@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-public class Doctor extends User {
+public class Doctor extends User implements RecordAccesible {
     private List<Appointment> appointments = new ArrayList<>();
 
     public Doctor(String name, Sex sex) {
@@ -29,10 +29,6 @@ public class Doctor extends User {
         patient.viewPrescriptions();
     }
 
-    public void viewMedicalRecords(Patient patient) {
-        patient.viewMedicalRecords();
-    }
-
     public void provideConsultation(Patient patient, String consultation) {
         // TODO: Implement medicalRecord class to be able to provide consultation
         // (medicalRecord class is not included in the deliverable 2 requirements that I set last time)
@@ -42,6 +38,12 @@ public class Doctor extends User {
         patient.getPrescriptions().add(prescription);
     }
 
+    @Override
+    public void viewMedicalRecords(Patient patient) {
+        patient.viewMedicalRecords();
+    }
+
+    @Override
     public void updateMedicalRecords(Patient patient, MedicalRecord medicalRecord) {
         patient.setMedicalRecord(medicalRecord);
     }
