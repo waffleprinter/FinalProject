@@ -33,8 +33,9 @@ public class Doctor extends User {
         patient.viewMedicalRecords();
     }
 
-    public void provideConsultation(Patient patient) {
-        // TODO: Implement
+    public void provideConsultation(Patient patient, String consultation) {
+        // TODO: Implement medicalRecord class to be able to provide consultation
+        // (medicalRecord class is not included in the deliverable 2 requirements that I set last time)
     }
 
     public void providePrescription(Patient patient, Prescription prescription) {
@@ -47,7 +48,21 @@ public class Doctor extends User {
 
     @Override
     public void displayDashboard() {
-        // TODO: Implement
+        System.out.println("=== Doctor Dashboard ===");
+        System.out.println("Name: " + getName());
+        System.out.println("Sex: " + getSex());
+        System.out.println();
+
+        System.out.println("=== Appointments ===");
+        if (appointments.isEmpty()) {
+            System.out.println("You have no appointments");
+        } else {
+            for (Appointment appointment : appointments) {
+                System.out.println("Appointment at " + appointment.getTime()
+                        + "with " + appointment.getPatient().getName()
+                        + ". Confirmed: " + appointment.isConfirmed());
+            }
+        }
     }
 
     @Override
