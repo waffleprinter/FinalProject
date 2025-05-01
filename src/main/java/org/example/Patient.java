@@ -8,6 +8,7 @@ import java.util.Objects;
 public class Patient extends User {
     private List<Appointment> appointments = new ArrayList<>();
     private List<Prescription> prescriptions = new ArrayList<>();
+    private List<DonationType> donorRequests = new ArrayList<>();
     private MedicalRecord medicalRecord; // TODO: Implement MedicalRecord class
 
     public Patient(String name, Sex sex) {
@@ -32,8 +33,8 @@ public class Patient extends User {
         }
     }
 
-    public void requestDonor(String type) {
-        // TODO: Implement
+    public void requestDonor(DonationType type) {
+        donorRequests.add(type);
     }
 
     @Override
@@ -41,18 +42,21 @@ public class Patient extends User {
         // TODO: Implement
     }
 
+    public enum DonationType {
+        BLOOD, EYE
+    }
+
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         Patient patient = (Patient) o;
-        return Objects.equals(appointments, patient.appointments) && Objects.equals(prescriptions, patient.prescriptions) && Objects.equals(medicalRecord, patient.medicalRecord);
+        return Objects.equals(appointments, patient.appointments) && Objects.equals(prescriptions, patient.prescriptions) && Objects.equals(donorRequests, patient.donorRequests) && Objects.equals(medicalRecord, patient.medicalRecord);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), appointments, prescriptions, medicalRecord);
+        return Objects.hash(super.hashCode(), appointments, prescriptions, donorRequests, medicalRecord);
     }
 
     @Override
@@ -62,6 +66,7 @@ public class Patient extends User {
                 "appointments=" + appointments +
                 ", prescriptions=" + prescriptions +
                 ", medicalRecord=" + medicalRecord +
+                ", donorRequests=" + donorRequests +
                 '}';
     }
 
@@ -87,5 +92,13 @@ public class Patient extends User {
 
     public void setMedicalRecord(MedicalRecord medicalRecord) {
         this.medicalRecord = medicalRecord;
+    }
+
+    public List<DonationType> getDonorRequests() {
+        return donorRequests;
+    }
+
+    public void setDonorRequests(List<DonationType> donorRequests) {
+        this.donorRequests = donorRequests;
     }
 }
