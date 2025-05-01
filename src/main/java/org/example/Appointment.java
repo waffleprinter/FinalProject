@@ -4,8 +4,8 @@ import java.time.LocalDateTime;
 import java.util.Objects;
 
 public class Appointment implements Comparable<Appointment> {
-    private Patient patient; // TODO: Implement Patient class
-    private Doctor doctor; // TODO: Implement Doctor class
+    private Patient patient;
+    private Doctor doctor;
     private LocalDateTime time;
     private boolean confirmed;
 
@@ -25,7 +25,13 @@ public class Appointment implements Comparable<Appointment> {
     }
 
     public void cancel() {
-        // TODO: Figure out how to do this, idk what to do
+        if (this.patient != null) {
+            this.patient.getAppointments().remove(this);
+        }
+
+        if (this.doctor != null) {
+            this.doctor.getAppointments().remove(this);
+        }
     }
 
     @Override
