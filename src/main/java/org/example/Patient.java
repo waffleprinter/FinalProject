@@ -16,7 +16,6 @@ public class Patient extends User {
     }
 
     public void bookAppointment(Doctor doctor, LocalDateTime time) {
-        // TODO: Implement Doctor class
         Appointment appointment = new Appointment(this, doctor, time);
         this.appointments.add(appointment);
         doctor.getAppointments().add(appointment);
@@ -39,7 +38,42 @@ public class Patient extends User {
 
     @Override
     public void displayDashboard() {
-        // TODO: Implement
+        System.out.println("=== Patient Dashboard ===");
+        System.out.println("Name: " + getName());
+        System.out.println("Sex: " + getSex());
+        System.out.println();
+
+        System.out.println("=== Appointments ===");
+        if (appointments.isEmpty()) {
+            System.out.println("You have no appointments");
+        } else {
+            for (Appointment appointment : appointments) {
+                System.out.println("Appointment at " + appointment.getTime()
+                        + "with Dr. " + appointment.getDoctor().getName()
+                        + ". Confirmed: " + appointment.isConfirmed());
+            }
+        }
+
+        System.out.println("=== Prescriptions ===");
+        if (prescriptions.isEmpty()) {
+            System.out.println("You have no prescriptions");
+        } else {
+            for (Prescription prescription : prescriptions) {
+                prescription.print();
+                System.out.println();
+            }
+        }
+
+        System.out.println("=== Donor Requests ===");
+        if (donorRequests.isEmpty()) {
+            System.out.println("You have no donor requests");
+        } else {
+            for (DonationType donorRequest : donorRequests) {
+                System.out.println(donorRequest);
+            }
+        }
+
+        // TODO: Implement medicalRecord summary
     }
 
     public enum DonationType {
