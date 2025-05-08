@@ -13,6 +13,7 @@
 
 # Implementation
 
+## User Hierarchy
 - **User (abstract)**
   - int id
   - String name
@@ -22,11 +23,13 @@
   - List\<Appointment\> appointments
   - List\<Prescription\> prescriptions
   - List\<LabTest\> labTests
+  - List\<DonorMatch\> donorMatches
   - MedicalRecord medicalRecord
 
 - Doctor extends User
   - List\<Appointment\> appointments
 
+## MedicalOrder Hierarchy
 - **MedicalOrder (abstract)**
   - int id
   - Doctor issuedBy
@@ -46,12 +49,14 @@
   - LocalDateTime resultDate
   - String resultsSummary
 
+## Single Classes
+  
 - **Appointment**
   - int id
   - Patient patient
   - Doctor doctor
   - LocalDateTime date
-  - Status status
+  - AppointmentStatus status
 
 - **MedicalRecord**
   - int id
@@ -61,4 +66,5 @@
   - List\<String\> allergies
   - List\<String\> pastIllnesses
   - List\<String\> surgeries
+  - List\<String\> donations
   - LocalDate lastUpdated
