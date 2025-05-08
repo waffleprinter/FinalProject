@@ -9,7 +9,6 @@
   - Lab
 
 - Appointment
-- MedicalRecord
 
 # Implementation
 
@@ -24,7 +23,6 @@
   - List\<Prescription\> prescriptions
   - List\<LabTest\> labTests
   - List\<DonorMatch\> donorMatches
-  - MedicalRecord medicalRecord
 
 - Doctor extends User
   - List\<Appointment\> appointments
@@ -57,14 +55,4 @@
   - Doctor doctor
   - LocalDateTime date
   - AppointmentStatus status
-
-- **MedicalRecord**
-  - int id
-  - Patient patient
-  - List\<Prescription\> prescriptions
-  - List\<LabTest\> labTests
-  - List\<String\> allergies
-  - List\<String\> pastIllnesses
-  - List\<String\> surgeries
-  - List\<String\> donations
-  - LocalDate lastUpdated
+  - 
