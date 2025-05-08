@@ -8,7 +8,7 @@
   - Prescription
   - Lab
 
-- 
+- Appointment
 
 # Implementation
 
@@ -17,24 +17,33 @@
   - String name
   - Sex sex
 
-- Patient
-  - TreeSet\<Prescription\> (otherwise use List\<Prescription\>)
-  - 
+- Patient extends User
+  - List\<Prescription\> prescriptions
+  - List\<LabTest\> labTests
+  - List\<Appointment\> appointments
 
 - **MedicalOrder (abstract)**
+  - int id
   - Doctor issuedBy
   - Patient patient
   - LocalDateTime dateIssued
   - Status status
 
-- Prescription
+- Prescription extends MedicalOrder
   - String medication
   - String dosage
   - String frequency
   - int duration
 
-- LabTest
+- LabTest extends MedicalOrder
   - String testName
   - LocalDateTime collectionDate
   - LocalDateTime resultDate
   - String resultsSummary
+
+- **Appointment**
+  - int id
+  - Patient patient
+  - Doctor doctor
+  - LocalDateTime date
+  - Status status
