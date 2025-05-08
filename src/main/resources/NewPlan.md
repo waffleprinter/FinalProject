@@ -22,7 +22,6 @@
   - List\<Appointment\> appointments
   - List\<Prescription\> prescriptions
   - List\<LabTest\> labTests
-  - List\<DonorMatch\> donorMatches
 
 - Doctor extends User
   - List\<Appointment\> appointments
@@ -55,4 +54,3 @@
   - Doctor doctor
   - LocalDateTime date
   - AppointmentStatus status
-  - 
