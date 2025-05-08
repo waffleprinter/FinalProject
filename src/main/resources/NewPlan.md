@@ -9,6 +9,7 @@
   - Lab
 
 - Appointment
+- MedicalRecord
 
 # Implementation
 
@@ -18,8 +19,12 @@
   - Sex sex
 
 - Patient extends User
+  - List\<Appointment\> appointments
   - List\<Prescription\> prescriptions
   - List\<LabTest\> labTests
+  - MedicalRecord medicalRecord
+
+- Doctor extends User
   - List\<Appointment\> appointments
 
 - **MedicalOrder (abstract)**
@@ -47,3 +52,13 @@
   - Doctor doctor
   - LocalDateTime date
   - Status status
+
+- **MedicalRecord**
+  - int id
+  - Patient patient
+  - List\<Prescription\> prescriptions
+  - List\<LabTest\> labTests
+  - List\<String\> allergies
+  - List\<String\> pastIllnesses
+  - List\<String\> surgeries
+  - LocalDate lastUpdated
