@@ -21,8 +21,12 @@ public class Appointment implements Comparable<Appointment> {
      * @return Whether the appointment was successfully canceled.
      */
     public boolean cancel()  {
-        // TODO: Implement
-        return true;
+        if (status == Status.REQUESTED || status == Status.CONFIRMED) {
+            status = Status.CANCELED;
+            return true;
+        }
+
+        return false;
     }
 
     /**
@@ -31,8 +35,12 @@ public class Appointment implements Comparable<Appointment> {
      * @return Whether the appointment was successfully confirmed.
      */
     public boolean confirm()  {
-        // TODO: Implement
-        return true;
+        if (status == Status.REQUESTED) {
+            status = Status.CONFIRMED;
+            return true;
+        }
+
+        return false;
     }
 
     @Override
