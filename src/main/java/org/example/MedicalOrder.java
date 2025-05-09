@@ -2,7 +2,7 @@ package org.example;
 
 import java.time.LocalDateTime;
 
-public class MedicalOrder {
+public abstract class MedicalOrder {
     private int id;
     private Doctor doctor;
     private Patient patient;
