@@ -14,6 +14,17 @@ public class LabTest extends MedicalOrder {
         this.labName = labName;
     }
 
+    /**
+     * Simply prints the relevant information
+     */
+    public void print() {
+        System.out.println("Lab Name: " + labName
+        + "\nCollection Date: " + collectionDate
+        + "\nResult Date: " + resultDate
+        + "\nSummary: " + summary
+        + "\nStatus: " + this.getStatus());
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
