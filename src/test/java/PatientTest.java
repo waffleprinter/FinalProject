@@ -26,8 +26,6 @@ public class PatientTest {
         Doctor doctor = new Doctor("Hippocrates", User.Sex.MALE);
         LocalDateTime time  = LocalDateTime.of(460, 1, 1, 1, 1);
 
-        patient.scheduleAppointment(doctor, time);
-
         Assertions.assertThrows(IllegalArgumentException.class,
                 () -> patient.scheduleAppointment(doctor, time));
 
