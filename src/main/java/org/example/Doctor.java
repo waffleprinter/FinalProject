@@ -17,6 +17,23 @@ public class Doctor extends User {
         this.appointments = appointments;
     }
 
+    /**
+     * Prescribes a medication to a patient
+     * @param patient The patient in need of medication
+     * @param prescription The medication to be prescribed
+     */
+    public void prescribeMedication(Patient patient, Prescription prescription) {
+        if (patient == null) {
+            throw new NullPointerException("Patient cannot be null");
+        }
+
+        if (prescription == null) {
+            throw new NullPointerException("Prescription cannot be null");
+        }
+
+        patient.getPrescriptions().add(prescription);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
