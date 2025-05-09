@@ -1,5 +1,6 @@
 package org.example;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -8,6 +9,7 @@ public class Doctor extends User {
 
     public Doctor(String name, Sex sex) {
         super(name, sex);
+        this.appointments = new ArrayList<>();
     }
 
     public Doctor(String name, Sex sex, List<Appointment> appointments) {
