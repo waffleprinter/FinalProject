@@ -10,7 +10,7 @@ public class Patient extends User {
     private List<Prescription> prescriptions;
     private List<LabTest> labTests;
     private BloodType bloodType;
-    private DonorRequest donorRequest;
+    private List<DonorRequest> donorRequest;
 
     public Patient(String name, Sex sex) {
         super(name, sex);
@@ -97,11 +97,11 @@ public class Patient extends User {
         this.bloodType = bloodType;
     }
 
-    public DonorRequest getDonorRequest() {
+    public List<DonorRequest> getDonorRequest() {
         return donorRequest;
     }
 
-    public void setDonorRequest(DonorRequest donorRequest) {
+    public void setDonorRequest(List<DonorRequest> donorRequest) {
         this.donorRequest = donorRequest;
     }
 }
