@@ -36,7 +36,7 @@ public class Doctor extends User {
         } else if (medicalOrder instanceof LabTest labTest) {
             patient.getLabTests().add(labTest);
         } else if (medicalOrder instanceof DonorRequest donorRequest) {
-            patient.getDonorRequest().add(donorRequest);
+            patient.getDonorRequests().add(donorRequest);
         }
     }
 

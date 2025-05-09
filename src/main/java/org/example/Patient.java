@@ -10,7 +10,7 @@ public class Patient extends User {
     private List<Prescription> prescriptions;
     private List<LabTest> labTests;
     private BloodType bloodType;
-    private List<DonorRequest> donorRequest;
+    private List<DonorRequest> donorRequests;
 
     public Patient(String name, Sex sex) {
         super(name, sex);
@@ -18,7 +18,7 @@ public class Patient extends User {
         this.prescriptions = new ArrayList<>();
         this.labTests = new ArrayList<>();
         this.bloodType = null;
-        this.donorRequest = null;
+        this.donorRequests = null;
     }
 
     /**
@@ -45,12 +45,12 @@ public class Patient extends User {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         Patient patient = (Patient) o;
-        return Objects.equals(appointments, patient.appointments) && Objects.equals(prescriptions, patient.prescriptions) && Objects.equals(labTests, patient.labTests) && bloodType == patient.bloodType && Objects.equals(donorRequest, patient.donorRequest);
+        return Objects.equals(appointments, patient.appointments) && Objects.equals(prescriptions, patient.prescriptions) && Objects.equals(labTests, patient.labTests) && bloodType == patient.bloodType && Objects.equals(donorRequests, patient.donorRequests);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), appointments, prescriptions, labTests, bloodType, donorRequest);
+        return Objects.hash(super.hashCode(), appointments, prescriptions, labTests, bloodType, donorRequests);
     }
 
     @Override
@@ -61,7 +61,7 @@ public class Patient extends User {
                 ", prescriptions=" + prescriptions +
                 ", labTests=" + labTests +
                 ", bloodType=" + bloodType +
-                ", donorRequest=" + donorRequest +
+                ", donorRequest=" + donorRequests +
                 '}';
     }
 
@@ -97,11 +97,11 @@ public class Patient extends User {
         this.bloodType = bloodType;
     }
 
-    public List<DonorRequest> getDonorRequest() {
-        return donorRequest;
+    public List<DonorRequest> getDonorRequests() {
+        return donorRequests;
     }
 
-    public void setDonorRequest(List<DonorRequest> donorRequest) {
-        this.donorRequest = donorRequest;
+    public void setDonorRequests(List<DonorRequest> donorRequests) {
+        this.donorRequests = donorRequests;
     }
 }
