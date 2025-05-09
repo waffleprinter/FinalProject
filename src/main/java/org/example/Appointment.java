@@ -6,49 +6,54 @@ import java.util.Objects;
 public class Appointment implements Comparable<Appointment> {
     private Patient patient;
     private Doctor doctor;
-    private LocalDateTime time;
-    private boolean confirmed;
+    private LocalDateTime date;
+    private Status status;
 
-    public Appointment(Patient patient, Doctor doctor, LocalDateTime time) {
-        if (time.isBefore(LocalDateTime.now())) {
-            throw new IllegalArgumentException("The time must be after the current time");
-        }
-
+    public Appointment(Patient patient, Doctor doctor, LocalDateTime date) {
         this.patient = patient;
         this.doctor = doctor;
-        this.time = time;
-        this.confirmed = false;
+        this.date = date;
+        this.status = Status.REQUESTED;
     }
 
-    public void confirm() {
-        this.confirmed = true;
+    /**
+     * Cancel a requested/confirmed appointment. Does nothing if the appointment is already canceled or completed.
+     * @return Whether the appointment was successfully canceled.
+     */
+    public boolean cancel()  {
+        // TODO: Implement
+        return true;
     }
 
-    public void cancel() {
-        if (this.patient != null) {
-            this.patient.getAppointments().remove(this);
-        }
-
-        if (this.doctor != null) {
-            this.doctor.getAppointments().remove(this);
-        }
+    /**
+     * Confirm a requested appointment. Does nothing if the appointment is already confirmed, canceled
+     * or completed.
+     * @return Whether the appointment was successfully confirmed.
+     */
+    public boolean confirm()  {
+        // TODO: Implement
+        return true;
     }
 
     @Override
     public int compareTo(Appointment o) {
-        return this.time.compareTo(o.time);
+        return date.compareTo(o.date);
+    }
+
+    public enum Status {
+        REQUESTED, CANCELED, CONFIRMED, COMPLETED
     }
 
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Appointment that = (Appointment) o;
-        return confirmed == that.confirmed && Objects.equals(patient, that.patient) && Objects.equals(doctor, that.doctor) && Objects.equals(time, that.time);
+        return Objects.equals(patient, that.patient) && Objects.equals(doctor, that.doctor) && Objects.equals(date, that.date) && status == that.status;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(patient, doctor, time, confirmed);
+        return Objects.hash(patient, doctor, date, status);
     }
 
     @Override
@@ -56,8 +61,8 @@ public class Appointment implements Comparable<Appointment> {
         return "Appointment{" +
                 "patient=" + patient +
                 ", doctor=" + doctor +
-                ", time=" + time +
-                ", confirmed=" + confirmed +
+                ", date=" + date +
+                ", status=" + status +
                 '}';
     }
 
@@ -77,19 +82,19 @@ public class Appointment implements Comparable<Appointment> {
         this.doctor = doctor;
     }
 
-    public LocalDateTime getTime() {
-        return time;
+    public LocalDateTime getDate() {
+        return date;
     }
 
-    public void setTime(LocalDateTime time) {
-        this.time = time;
+    public void setDate(LocalDateTime date) {
+        this.date = date;
     }
 
-    public boolean isConfirmed() {
-        return confirmed;
+    public Status getStatus() {
+        return status;
     }
 
-    public void setConfirmed(boolean confirmed) {
-        this.confirmed = confirmed;
+    public void setStatus(Status status) {
+        this.status = status;
     }
 }
