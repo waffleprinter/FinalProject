@@ -17,6 +17,17 @@ public class Prescription extends MedicalOrder {
         this.expiryDate = expiryDate;
     }
 
+    /**
+     * Simply prints the relevant information
+     */
+    public void print() {
+        System.out.println("Medication: " + medication
+        + "\nDosage: " + dosage
+        + "\nFrequency: " + frequency
+        + "\nExpiry Date: " + expiryDate
+        + "\nStatus: " + this.getStatus());
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
