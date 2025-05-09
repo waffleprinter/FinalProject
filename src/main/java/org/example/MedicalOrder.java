@@ -17,11 +17,11 @@ public abstract class MedicalOrder {
         this.doctor = doctor;
         this.patient = patient;
         this.issueDate = LocalDateTime.now();
-        this.status = Status.PENDING;
+        this.status = Status.IN_PROGRESS;
     }
 
     public enum Status {
-        PENDING, IN_PROGRESS, COMPLETED, CANCELLED, EXPIRED, FAILED
+        IN_PROGRESS, CANCELLED, COMPLETED
     }
 
     @Override
