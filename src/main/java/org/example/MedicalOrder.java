@@ -20,6 +20,8 @@ public abstract class MedicalOrder {
         this.status = Status.IN_PROGRESS;
     }
 
+    public abstract void print();
+
     public enum Status {
         IN_PROGRESS, CANCELLED, COMPLETED
     }

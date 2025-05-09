@@ -17,6 +17,7 @@ public class LabTest extends MedicalOrder {
     /**
      * Simply prints the relevant information
      */
+    @Override
     public void print() {
         System.out.println("Lab Name: " + labName
         + "\nCollection Date: " + collectionDate

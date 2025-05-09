@@ -20,6 +20,17 @@ public class DonorRequest extends MedicalOrder {
         this.bloodType = bloodType;
     }
 
+    /**
+     * Simply print the relevant information
+     */
+    @Override
+    public void print() {
+        System.out.println("Donor Type: " + donorType
+        + "\nBlood Type: " + bloodType
+        + "\nMatch Date: " + matchDate
+        + "\nFulfilled Date: " + fulfilledDate);
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;

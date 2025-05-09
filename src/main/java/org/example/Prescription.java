@@ -20,6 +20,7 @@ public class Prescription extends MedicalOrder {
     /**
      * Simply prints the relevant information
      */
+    @Override
     public void print() {
         System.out.println("Medication: " + medication
         + "\nDosage: " + dosage
