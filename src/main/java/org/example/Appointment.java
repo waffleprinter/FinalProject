@@ -43,6 +43,13 @@ public class Appointment implements Comparable<Appointment> {
         return false;
     }
 
+    public void print() {
+        System.out.println("Patient: " + patient
+        + "\nDoctor: " + doctor
+        + "\nDate: " + date
+        + "\nStatus: " + status);
+    }
+
     @Override
     public int compareTo(Appointment o) {
         return date.compareTo(o.date);
