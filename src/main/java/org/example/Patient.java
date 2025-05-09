@@ -26,12 +26,12 @@ public class Patient extends User {
      * @param doctor The doctor that the appointment should be scheduled with
      */
     public void scheduleAppointment(Doctor doctor, LocalDateTime time) {
-        if (time.isBefore(LocalDateTime.now())) {
-            throw new IllegalArgumentException("The time must be after the current time");
-        }
-
         if (doctor == null) {
             throw new NullPointerException("Doctor cannot be null");
+        }
+
+        if (time.isBefore(LocalDateTime.now())) {
+            throw new IllegalArgumentException("The time must be after the current time");
         }
 
         Appointment appointment = new Appointment(this, doctor, time);
