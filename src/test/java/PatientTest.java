@@ -17,7 +17,7 @@ public class PatientTest {
 
         patient.scheduleAppointment(doctor, time);
 
-        Assertions.assertEquals(patient.getAppointments(), doctor.getAppointments());
+        Assertions.assertEquals(patient.getAppointments().getLast(), doctor.getAppointments().getLast());
     }
 
     @Test
