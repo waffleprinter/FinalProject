@@ -15,8 +15,6 @@ public abstract class User {
         this.sex = sex;
     }
 
-    public abstract void displayDashboard();
-
     public enum Sex {
         MALE, FEMALE
     }
