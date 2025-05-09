@@ -1,5 +1,7 @@
 package org.example;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -12,6 +14,30 @@ public class Patient extends User {
 
     public Patient(String name, Sex sex) {
         super(name, sex);
+        this.appointments = new ArrayList<>();
+        this.prescriptions = new ArrayList<>();
+        this.labTests = new ArrayList<>();
+        this.bloodType = null;
+        this.donorRequest = null;
+    }
+
+    /**
+     * Schedules an appointment with a doctor. The doctor must still confirm the appointment.
+     * @param doctor The doctor that the appointment should be scheduled with
+     */
+    public void scheduleAppointment(Doctor doctor, LocalDateTime time) {
+        if (time.isBefore(LocalDateTime.now())) {
+            throw new IllegalArgumentException("The time must be after the current time");
+        }
+
+        if (doctor == null) {
+            throw new NullPointerException("Doctor cannot be null");
+        }
+
+        Appointment appointment = new Appointment(this, doctor, time);
+
+        this.appointments.add(appointment);
+        doctor.getAppointments().add(appointment);
     }
 
     @Override
