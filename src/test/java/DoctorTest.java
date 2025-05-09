@@ -10,14 +10,14 @@ import java.time.LocalDateTime;
 public class DoctorTest {
 
     @Test
-    public void prescribeMedicationTest_normalCase() {
+    public void prescribeMedicalOrderTest_normalCase() {
         Patient patient = new Patient("Nelson", User.Sex.MALE);
         Doctor doctor = new Doctor("Hippocrates", User.Sex.MALE);
 
         Prescription prescription = new Prescription(doctor, patient,
                 "Advil", "1 tablet", "1 per 4 hours", LocalDateTime.now());
 
-        doctor.prescribeMedication(patient, prescription);
+        doctor.prescribeMedicalOrder(patient, prescription);
 
         Assertions.assertEquals(patient.getPrescriptions().getLast(), prescription);
     }
@@ -31,9 +31,9 @@ public class DoctorTest {
                 "Advil", "1 tablet", "1 per 4 hours", LocalDateTime.now());
 
         Assertions.assertThrows(NullPointerException.class,
-                () -> doctor.prescribeMedication(null, prescription));
+                () -> doctor.prescribeMedicalOrder(null, prescription));
 
         Assertions.assertThrows(NullPointerException.class,
-                () -> doctor.prescribeMedication(patient, null));
+                () -> doctor.prescribeMedicalOrder(patient, null));
     }
 }

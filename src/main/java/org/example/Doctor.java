@@ -18,20 +18,26 @@ public class Doctor extends User {
     }
 
     /**
-     * Prescribes a medication to a patient
-     * @param patient The patient in need of medication
-     * @param prescription The medication to be prescribed
+     * Prescribes a medical order to a patient
+     * @param patient The patient in need of a medical order
+     * @param medicalOrder The order to be prescribed
      */
-    public void prescribeMedication(Patient patient, Prescription prescription) {
+    public void prescribeMedicalOrder(Patient patient, MedicalOrder medicalOrder) {
         if (patient == null) {
             throw new NullPointerException("Patient cannot be null");
         }
 
-        if (prescription == null) {
-            throw new NullPointerException("Prescription cannot be null");
+        if (medicalOrder == null) {
+            throw new NullPointerException("Medical order cannot be null");
         }
 
-        patient.getPrescriptions().add(prescription);
+        if (medicalOrder instanceof Prescription prescription) {
+            patient.getPrescriptions().add(prescription);
+        } else if (medicalOrder instanceof LabTest labTest) {
+            patient.getLabTests().add(labTest);
+        } else if (medicalOrder instanceof DonorRequest donorRequest) {
+            patient.getDonorRequest().add(donorRequest);
+        }
     }
 
     @Override
