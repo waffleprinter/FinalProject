@@ -8,13 +8,14 @@ public class Doctor extends User {
     private List<Appointment> appointments;
 
     public Doctor(String name, Sex sex) {
-        super(name, sex);
-        this.appointments = new ArrayList<>();
+        this(name, sex, new ArrayList<>());
     }
 
     public Doctor(String name, Sex sex, List<Appointment> appointments) {
         super(name, sex);
         this.appointments = appointments;
+
+        HospitalManagementSystem.getDoctors().add(this);
     }
 
     /**
