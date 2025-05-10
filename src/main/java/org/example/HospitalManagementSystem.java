@@ -1,5 +1,7 @@
 package org.example;
 
+import java.io.FileWriter;
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -33,6 +35,87 @@ public class HospitalManagementSystem {
                     donorMatches.put(donor, donorRequest);
                 }
             }
+        }
+    }
+
+    /**
+     * Exports patient information to a separate csv file
+     */
+    public static void exportPatients() {
+        String filePath = "src/main/resources/patients.csv";
+
+        try (FileWriter fileWriter = new FileWriter(filePath)) {
+            for (Patient patient : patients) {
+                int id = patient.getId();
+                String name = patient.getName();
+                User.Sex sex = patient.getSex();
+                int numOfAppointments = patient.getAppointments().size();
+                int numOfPrescriptions = patient.getPrescriptions().size();
+                int numOfLabTests = patient.getLabTests().size();
+                BloodType bloodType = patient.getBloodType();
+                int numOfDonorRequests = patient.getDonorRequests().size();
+
+                fileWriter.write(id + ","
+                        + name + ","
+                        + sex + ","
+                        + numOfAppointments + ","
+                        + numOfPrescriptions + ","
+                        + numOfLabTests + ","
+                        + bloodType + ","
+                        + numOfDonorRequests + ",");
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
+     * Exports donor information to a separate csv file
+     */
+    public static void exportDonors() {
+        String filePath = "src/main/resources/donors.csv";
+
+        try (FileWriter fileWriter = new FileWriter(filePath)) {
+            for (Donor donor : donors) {
+                int id = donor.getId();
+                String name = donor.getName();
+                User.Sex sex = donor.getSex();
+                DonorType donorType = donor.getDonorType();
+                BloodType bloodType = donor.getBloodType();
+                boolean isAvailable = donor.isAvailable();
+
+                fileWriter.write(id + ","
+                        + name + ","
+                        + sex + ","
+                        + donorType + ","
+                        + bloodType + ","
+                        + isAvailable + ",");
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
+     * Exports doctor information to a separate csv file
+     */
+    public static void exportDoctors() {
+        String filePath = "src/main/resources/doctors.csv";
+
+        try (FileWriter fileWriter = new FileWriter(filePath)) {
+            for (Doctor doctor : doctors) {
+                int id = doctor.getId();
+                String name = doctor.getName();
+                User.Sex sex = doctor.getSex();
+                int numOfAppointments = doctor.getAppointments().size();
+
+                fileWriter.write(id + ","
+                        + name + ","
+                        + sex + ","
+                        + numOfAppointments + ",");
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
 
