@@ -17,7 +17,7 @@ public class Donor extends User {
         this.bloodType = bloodType;
         this.isAvailable = isAvailable;
 
-        DonationManagementSystem.getDonors().add(this);
+        HospitalManagementSystem.getDonors().add(this);
     }
 
     @Override

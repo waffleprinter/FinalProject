@@ -20,7 +20,7 @@ public class Patient extends User {
         this.bloodType = null;
         this.donorRequests = null;
 
-        DonationManagementSystem.getPatients().add(this);
+        HospitalManagementSystem.getPatients().add(this);
     }
 
     /**
