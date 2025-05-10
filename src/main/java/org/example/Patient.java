@@ -19,6 +19,8 @@ public class Patient extends User {
         this.labTests = new ArrayList<>();
         this.bloodType = null;
         this.donorRequests = null;
+
+        DonationManagementSystem.getPatients().add(this);
     }
 
     /**
