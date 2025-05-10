@@ -8,7 +8,6 @@ public class DonorRequest extends MedicalOrder {
     private BloodType bloodType;
     private LocalDateTime matchDate;
     private LocalDateTime fulfilledDate;
-    private Donor donor;
 
     public DonorRequest(Doctor doctor, Patient patient, DonorType donorType) {
         this(doctor, patient, donorType, null);
@@ -20,7 +19,6 @@ public class DonorRequest extends MedicalOrder {
         this.bloodType = bloodType;
         this.matchDate = null;
         this.fulfilledDate = null;
-        this.donor = null;
     }
 
     /**
@@ -31,8 +29,7 @@ public class DonorRequest extends MedicalOrder {
         System.out.println("Donor Type: " + donorType
         + "\nBlood Type: " + bloodType
         + "\nMatch Date: " + matchDate
-        + "\nFulfilled Date: " + fulfilledDate
-        + "\nDonor: " + donor);
+        + "\nFulfilled Date: " + fulfilledDate);
     }
 
     @Override
@@ -40,12 +37,12 @@ public class DonorRequest extends MedicalOrder {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         DonorRequest that = (DonorRequest) o;
-        return donorType == that.donorType && bloodType == that.bloodType && Objects.equals(matchDate, that.matchDate) && Objects.equals(fulfilledDate, that.fulfilledDate) && Objects.equals(donor, that.donor);
+        return donorType == that.donorType && bloodType == that.bloodType && Objects.equals(matchDate, that.matchDate) && Objects.equals(fulfilledDate, that.fulfilledDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), donorType, bloodType, matchDate, fulfilledDate, donor);
+        return Objects.hash(super.hashCode(), donorType, bloodType, matchDate, fulfilledDate);
     }
 
     @Override
@@ -56,7 +53,6 @@ public class DonorRequest extends MedicalOrder {
                 ", bloodType=" + bloodType +
                 ", matchDate=" + matchDate +
                 ", fulfilledDate=" + fulfilledDate +
-                ", donor=" + donor +
                 '}';
     }
 
@@ -90,13 +86,5 @@ public class DonorRequest extends MedicalOrder {
 
     public void setFulfilledDate(LocalDateTime fulfilledDate) {
         this.fulfilledDate = fulfilledDate;
-    }
-
-    public Donor getDonor() {
-        return donor;
-    }
-
-    public void setDonor(Donor donor) {
-        this.donor = donor;
     }
 }
