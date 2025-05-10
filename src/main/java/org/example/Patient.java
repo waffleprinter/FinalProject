@@ -18,7 +18,7 @@ public class Patient extends User {
         this.prescriptions = new ArrayList<>();
         this.labTests = new ArrayList<>();
         this.bloodType = null;
-        this.donorRequests = null;
+        this.donorRequests = new ArrayList<>();
 
         HospitalManagementSystem.getPatients().add(this);
     }
