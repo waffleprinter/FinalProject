@@ -44,7 +44,7 @@ public class Appointment implements Comparable<Appointment> {
     }
 
     public void print() {
-        System.out.println("Patient: " + patient
+        System.out.println("Patient: " + patient.getName()
         + "\nDoctor: " + doctor
         + "\nDate: " + date
         + "\nStatus: " + status);
@@ -74,8 +74,8 @@ public class Appointment implements Comparable<Appointment> {
     @Override
     public String toString() {
         return "Appointment{" +
-                "patient=" + patient +
-                ", doctor=" + doctor +
+                "patient=" + patient.getName() +
+                ", doctor=" + doctor.getName() +
                 ", date=" + date +
                 ", status=" + status +
                 '}';
