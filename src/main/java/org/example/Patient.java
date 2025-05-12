@@ -42,13 +42,13 @@ public class Patient extends User {
         doctor.getAppointments().add(appointment);
     }
 
-    private void viewPrescriptions() {
+    public void viewPrescriptions() {
         for (Prescription prescription : prescriptions) {
             prescription.print();
         }
     }
 
-    private void viewLabTests() {
+    public void viewLabTests() {
         for (LabTest labTest : labTests) {
             labTest.print();
         }
