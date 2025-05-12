@@ -62,7 +62,7 @@ public class HospitalManagementSystem {
                         + numOfPrescriptions + ","
                         + numOfLabTests + ","
                         + bloodType + ","
-                        + numOfDonorRequests + ",");
+                        + numOfDonorRequests + "\n");
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -89,7 +89,7 @@ public class HospitalManagementSystem {
                         + sex + ","
                         + donorType + ","
                         + bloodType + ","
-                        + isAvailable + ",");
+                        + isAvailable + "\n");
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
@@ -112,7 +112,7 @@ public class HospitalManagementSystem {
                 fileWriter.write(id + ","
                         + name + ","
                         + sex + ","
-                        + numOfAppointments + ",");
+                        + numOfAppointments + "\n");
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
