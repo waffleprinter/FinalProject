@@ -45,7 +45,7 @@ public class Appointment implements Comparable<Appointment> {
 
     public void print() {
         System.out.println("Patient: " + patient.getName()
-        + "\nDoctor: " + doctor
+        + "\nDoctor: " + doctor.getName()
         + "\nDate: " + date
         + "\nStatus: " + status);
     }
