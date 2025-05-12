@@ -1,6 +1,7 @@
 package org.example;
 
 import java.time.LocalDateTime;
+import java.util.Comparator;
 import java.util.Objects;
 
 public class Prescription extends MedicalOrder {
@@ -27,6 +28,23 @@ public class Prescription extends MedicalOrder {
         + "\nFrequency: " + frequency
         + "\nExpiry Date: " + expiryDate
         + "\nStatus: " + this.getStatus());
+    }
+
+    public class PrescriptionComparator implements Comparator<Prescription> {
+        String type;
+
+        public PrescriptionComparator(String type) {
+            this.type = type;
+        }
+
+        @Override
+        public int compare(Prescription o1, Prescription o2) {
+            return switch (type) {
+                case "expiry" -> expiryDate.compareTo(o1.expiryDate);
+                case "status" -> o1.getStatus().compareTo(o2.getStatus());
+                default -> o1.medication.compareTo(o2.medication);
+            };
+        }
     }
 
     @Override
