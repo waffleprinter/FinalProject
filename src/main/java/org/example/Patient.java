@@ -42,6 +42,18 @@ public class Patient extends User {
         doctor.getAppointments().add(appointment);
     }
 
+    private void viewPrescriptions() {
+        for (Prescription prescription : prescriptions) {
+            prescription.print();
+        }
+    }
+
+    private void viewLabTests() {
+        for (LabTest labTest : labTests) {
+            labTest.print();
+        }
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
